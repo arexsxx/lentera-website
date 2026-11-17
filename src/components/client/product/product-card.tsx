@@ -1,6 +1,5 @@
 import { ProductImage } from "@/components/client/product/product-image";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 interface ProductCardProps {
   name: string;
@@ -20,12 +19,12 @@ export function ProductCard({ name, description, price, imageUrl, stock, classNa
   }).format(price || 0);
 
   return (
-    <div className={cn(
-      "group min-w-0 flex flex-col items-center text-center p-3 md:p-5 rounded-2xl bg-[#F8F9FA] hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-transparent hover:border-border/50 relative",
+    <article className={cn(
+      "flex min-w-0 flex-col rounded-xl border border-border bg-card p-3 md:p-5",
       className
     )}>
       {/* Wadah Gambar */}
-      <div className="relative w-full aspect-square mb-3 md:mb-4 mix-blend-multiply flex items-center justify-center overflow-hidden transition-transform duration-500 md:group-hover:scale-105">
+      <div className="relative mb-3 aspect-square w-full overflow-hidden rounded-lg bg-background md:mb-4">
         <ProductImage
           src={imageUrl}
           alt={name}
@@ -33,30 +32,23 @@ export function ProductCard({ name, description, price, imageUrl, stock, classNa
       </div>
       
       {/* Badge ketersediaan stok produk */}
-      <div className="absolute top-2 right-2 md:top-4 md:right-4">
-        {stock > 0 ? (
-          <Badge className="bg-white/90 text-primary hover:bg-white border-none shadow-sm backdrop-blur-sm text-[10px]">
-            Sisa {stock}
-          </Badge>
-        ) : (
-          <Badge variant="destructive" className="shadow-sm text-[10px]">
-            Habis
-          </Badge>
-        )}
-      </div>
+      <p className={cn("mb-2 w-fit rounded px-1.5 py-1 text-xs font-medium", stock > 0 ? "bg-primary/10 text-foreground" : "text-destructive")}>
+        {stock > 0 ? `Tersedia ${stock} unit` : "Stok habis"}
+      </p>
       
       {/* Konten Teks */}
-      <h3 className="font-heading text-sm md:text-lg font-bold text-foreground mb-1.5 leading-5 md:leading-6 line-clamp-2 min-h-10 md:min-h-12">
+      <h3 className="line-clamp-2 min-h-10 font-heading text-sm font-semibold leading-5 md:min-h-12 md:text-lg md:leading-6">
         {name}
       </h3>
-      <p className="font-jakarta text-xs md:text-sm text-foreground/70 leading-relaxed mb-3 md:mb-4 line-clamp-2">
+      <p className="mb-4 mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground md:text-sm">
         {description}
       </p>
       
       {/* Harga */}
-      <div className="mt-auto flex flex-wrap justify-center items-baseline gap-1 font-heading text-primary font-bold text-sm md:text-base">
-        {formattedPrice} <span className="text-foreground/50 text-xs font-medium">/hari</span>
+      <div className="mt-auto flex flex-wrap items-baseline gap-1 border-t border-border pt-3">
+        <span className="font-heading text-base font-semibold md:text-xl">{formattedPrice}</span>
+        <span className="text-xs text-muted-foreground">/ hari</span>
       </div>
-    </div>
+    </article>
   );
 }

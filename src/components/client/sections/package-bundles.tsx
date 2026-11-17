@@ -1,10 +1,9 @@
-import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { STORE_CONTACT } from "@/lib/store-contact";
 
 const BUNDLE_PACKAGES = [
   {
     name: "Keluarga Bahagia 6 Orang",
-    image: "/images/bundle-6.jpg", // Pastikan menambahkan gambar dengan nama ini di folder public/images/
     items: [
       "1 Tenda Kapasitas 6 Orang",
       "1 Lampu tenda + baterai",
@@ -22,7 +21,6 @@ const BUNDLE_PACKAGES = [
   },
   {
     name: "Keluarga Bahagia 4 Orang",
-    image: "/images/bundle-4.jpg", // Pastikan menambahkan gambar dengan nama ini di folder public/images/
     items: [
       "1 Tenda Kapasitas 4 Orang",
       "1 Lampu tenda + baterai",
@@ -40,7 +38,6 @@ const BUNDLE_PACKAGES = [
   },
   {
     name: "Keluarga Bahagia 2 Orang",
-    image: "/images/bundle-2.jpg", 
     items: [
       "1 Tenda Kapasitas 2 Orang",
       "1 Lampu tenda + baterai",
@@ -58,13 +55,12 @@ const BUNDLE_PACKAGES = [
 
 export function PackageBundles() {
   return (
-    <section id="paket" className="scroll-mt-24 py-12 md:py-28 px-4 bg-background">
-      <div className="container mx-auto max-w-7xl">
+    <section id="paket" className="scroll-mt-24 bg-muted/50 px-4 py-12 md:py-20">
+      <div className="mx-auto max-w-6xl">
         
         {/* Header Section */}
-        <div className="text-center mb-8 md:mb-16 max-w-3xl mx-auto flex flex-col items-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">Pergi bersama, lebih praktis</p>
-          <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
+        <div className="mb-6 flex max-w-2xl flex-col md:mb-8">
+          <h2 className="mb-3 font-heading text-3xl font-semibold tracking-tight md:text-4xl">
             Paket Hemat & Praktis
           </h2>
           <p className="font-jakarta text-foreground/70 text-sm md:text-lg leading-relaxed">
@@ -73,40 +69,29 @@ export function PackageBundles() {
         </div>
 
         {/* Grid Bundling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {BUNDLE_PACKAGES.map((pkg, idx) => (
-            <div key={idx} className="flex flex-col">
-              
-              {/* Thumbnail Gambar */}
-              <div className="relative w-full aspect-4/3 rounded-2xl md:rounded-4xl overflow-hidden mb-5 md:mb-8 bg-foreground/5 shadow-sm">
-                <Image 
-                  src={pkg.image} 
-                  alt={`Paket ${pkg.name}`}
-                  fill
-                  className="object-cover object-center transition-transform duration-500 hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
+            <article key={idx} className="flex min-w-0 flex-col rounded-xl border border-border bg-card p-3 md:p-6">
               
               {/* Judul Paket */}
-              <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
+              <h3 className="mb-4 border-b border-border pb-4 font-heading text-xl font-semibold">
                 {pkg.name}
               </h3>
               
               {/* Daftar Perlengkapan */}
-              <ul className="space-y-3.5 font-jakarta text-sm md:text-base text-foreground/70">
+              <ul className="mb-6 space-y-2 text-sm leading-6 text-muted-foreground">
                 {pkg.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="flex items-start gap-3">
-                    <CheckCircle 
-                      className="h-5 w-5 text-white fill-primary shrink-0 mt-0.5" 
-                      strokeWidth={2}
-                    />
-                    <span className="font-medium">{item}</span>
+                  <li key={itemIdx}>
+                    {item}
                   </li>
                 ))}
               </ul>
-
-            </div>
+              <Button asChild variant="outline" className="mt-auto w-full">
+                <a href={`${STORE_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Halo Lentera, saya ingin menanyakan harga dan ketersediaan paket ${pkg.name}.`)}`}>
+                  Tanya Paket
+                </a>
+              </Button>
+            </article>
           ))}
         </div>
       </div>

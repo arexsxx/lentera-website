@@ -26,12 +26,12 @@ const FEATURES = [
 
 export function WhyChooseUs() {
   return (
-    <section id="tentang" className="scroll-mt-24 py-12 md:py-28 px-4 bg-white overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
+    <section id="tentang" className="scroll-mt-24 bg-white px-4 py-12 md:py-20">
+      <div className="mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 items-center">
           
           {/* Kolom Kiri: Gambar Representatif */}
-          <div className="w-full lg:w-5/12 relative h-56 sm:h-80 lg:h-187.5 rounded-2xl md:rounded-4xl overflow-hidden shrink-0">
+          <div className="relative h-64 w-full shrink-0 overflow-hidden rounded-xl sm:h-80 lg:h-[620px] lg:w-5/12">
             <Image 
               src="/images/hero2.png"
               alt="Perlengkapan pendakian Lentera Outdoor"
@@ -45,8 +45,7 @@ export function WhyChooseUs() {
           <div className="w-full lg:w-7/12 flex flex-col justify-center">
             
             <div className="mb-6 lg:mb-14">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">Teman setiap perjalanan</p>
-              <h2 className="font-heading text-2xl md:text-4xl lg:text-[42px] font-bold text-foreground mb-4 leading-tight tracking-tight">
+              <h2 className="mb-4 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
                 Kenapa Memilih Lentera Outdoor?
               </h2>
               <p className="font-jakarta text-foreground/70 text-sm md:text-lg leading-relaxed max-w-2xl">
@@ -55,20 +54,20 @@ export function WhyChooseUs() {
             </div>
             
             {/* Grid 2x2 Fitur */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
               {FEATURES.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
                   <div 
                     key={idx} 
-                    className="flex flex-col p-5 md:p-7 bg-background border border-border/40 rounded-2xl md:rounded-3xl transition-colors hover:border-primary/25"
+                    className="flex flex-col border-t border-border py-5 md:py-6"
                   >
                     {/* Ikon dengan border bundar khas desain referensi */}
-                    <div className="h-11 w-11 md:h-12 md:w-12 rounded-xl bg-primary/10 border border-primary/10 flex items-center justify-center mb-4 md:mb-6">
-                      <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                    <div className="mb-3 text-primary">
+                      <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.5} />
                     </div>
                     
-                    <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3">
+                    <h3 className="mb-2 font-heading text-lg font-semibold">
                       {feature.title}
                     </h3>
                     

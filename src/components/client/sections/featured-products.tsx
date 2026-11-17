@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCatalog } from "@/components/client/product/product-catalog";
 import { createClient } from "@/lib/supabase/server";
 
-export async function FeaturedProducts() {
+export async function FeaturedProducts({ searchQuery = "", rentalDatesSelected = false }: { searchQuery?: string; rentalDatesSelected?: boolean }) {
   // Ambil cookieStore terlebih dahulu dari Next.js Server Component
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
@@ -25,14 +24,13 @@ export async function FeaturedProducts() {
   const displayProducts = products || [];
 
   return (
-    <section id="katalog" className="scroll-mt-24 py-12 md:py-28 px-4 bg-white relative z-20">
+    <section id="katalog" className="relative z-20 scroll-mt-24 bg-background px-4 py-12 md:py-20">
       <div className="container mx-auto max-w-6xl">
         
         {/* Header Section */}
-        <div className="text-center mb-6 md:mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">Perlengkapan pilihan</p>
-          <h2 className="font-heading text-2xl md:text-[32px] font-bold text-foreground mb-3">
-            Pilihan Perlengkapan Terbaik
+        <div className="mb-6 md:mb-8">
+          <h2 className="mb-3 font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+            Pilih alat, mulai perjalanan.
           </h2>
           <p className="font-jakarta text-foreground/70 text-sm md:text-base font-medium">
             Siap disewa untuk menemani perjalanan alammu
@@ -47,12 +45,13 @@ export async function FeaturedProducts() {
         )}
 
         {/* Grid Produk */}
+        {rentalDatesSelected && <p className="mb-4 text-sm text-muted-foreground">Ketersediaan untuk tanggal sewa pilihanmu dikonfirmasi melalui WhatsApp.</p>}
           {displayProducts.length > 0 ? (
-            <ProductCatalog products={displayProducts} />
+            <ProductCatalog products={displayProducts} searchQuery={searchQuery} />
           ) : !error ? (
-             <div className="col-span-full py-16 flex flex-col items-center justify-center border-2 border-dashed border-border rounded-3xl text-foreground/50">
+             <div className="flex flex-col items-center justify-center rounded-xl border border-border bg-card px-3 py-12 text-center text-muted-foreground">
                <span className="font-jakarta font-medium mb-1">Katalog Masih Kosong</span>
-               <span className="text-sm">Silakan tambahkan produk baru melalui dashboard admin.</span>
+               <span className="text-sm">Hubungi kami untuk menanyakan perlengkapan yang tersedia.</span>
              </div>
           ) : null}
 
@@ -62,11 +61,10 @@ export async function FeaturedProducts() {
             <Button 
               asChild 
               variant="outline"
-              className="w-full sm:w-auto rounded-full px-8 h-12 text-[15px] font-bold shadow-none group"
+              className="min-h-12 w-full px-6 sm:w-auto"
             >
               <Link href="/#paket">
                 Lihat Paket Sewa
-                <ChevronRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
               </Link>
             </Button>
           </div>

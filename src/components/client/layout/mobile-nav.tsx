@@ -32,7 +32,7 @@ export function MobileNav() {
   }, []);
 
   return (
-    <nav aria-label="Navigasi utama ponsel" className="md:hidden fixed bottom-0 left-0 right-0 z-50 grid grid-cols-4 bg-white/95 backdrop-blur-md border-t border-border pb-[env(safe-area-inset-bottom)] px-2">
+    <nav aria-label="Navigasi utama ponsel" className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-4 border-t border-border bg-white px-2 pb-[env(safe-area-inset-bottom)] md:hidden">
       {MOBILE_LINKS.map((link) => {
         const isActive = activeSection === link.section;
         const Icon = link.icon;
@@ -43,8 +43,8 @@ export function MobileNav() {
             href={link.href}
             aria-current={isActive ? "location" : undefined}
             className={cn(
-              "min-h-16 min-w-11 flex flex-col items-center justify-center gap-1 rounded-xl transition-colors",
-              isActive ? "text-primary bg-primary/5" : "text-foreground/70 hover:text-foreground"
+              "flex min-h-16 min-w-0 flex-col items-center justify-center gap-1 rounded-lg border-t-2 transition-colors active:bg-primary/10",
+              isActive ? "border-primary bg-primary/5 text-foreground [&>svg]:text-primary" : "border-transparent text-muted-foreground hover:border-primary hover:bg-primary/5 hover:text-foreground"
             )}
           >
             <Icon aria-hidden="true" className="h-5 w-5" />

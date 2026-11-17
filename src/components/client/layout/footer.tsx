@@ -5,8 +5,8 @@ import { STORE_CONTACT } from "@/lib/store-contact";
 
 export function Footer() {
   return (
-    <footer id="kontak" className="scroll-mt-24 bg-[#0a1114] pt-10 md:pt-16 pb-8 px-4 border-t-2 border-primary/70 text-white/70 font-jakarta">
-      <div className="container mx-auto max-w-7xl">
+    <footer id="kontak" className="scroll-mt-24 bg-foreground px-4 pb-8 pt-10 font-jakarta text-white/80 [--ring:#FFFFFF] md:pt-16">
+      <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-16">
           
           {/* Kolom Logo & Info */}
@@ -16,7 +16,7 @@ export function Footer() {
               Lentera Outdoor adalah platform penyewaan perlengkapan camping dan hiking terlengkap dan terpercaya di wilayah Kediri Raya.
             </p>
             <div className="flex gap-4">
-              <a href={STORE_CONTACT.whatsappUrl} aria-label="Hubungi Lentera melalui WhatsApp" className="h-11 w-11 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <a href={STORE_CONTACT.whatsappUrl} aria-label="Hubungi Lentera melalui WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/40 transition-colors hover:bg-white/10 hover:text-white">
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />
               </a>
             </div>

@@ -1,13 +1,18 @@
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { cn } from "@/lib/utils";
 import "./globals.css"; // Pastikan CSS global diimpor di root layout
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-jakarta-family",
 });
+
+export const metadata: Metadata = {
+  title: "Lentera Outdoor | Sewa Alat Camping & Hiking Kediri",
+  description: "Temukan perlengkapan camping, pendakian, dan paket sewa Lentera Outdoor di Kediri. Pilih alat dan konsultasikan kebutuhanmu melalui WhatsApp.",
+};
 
 export const viewport: Viewport = {
   width: "device-width",

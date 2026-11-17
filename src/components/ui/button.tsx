@@ -6,25 +6,25 @@ import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-jakarta font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97]",
+  "inline-flex items-center justify-center gap-2 whitespace-normal rounded-lg border border-transparent text-center text-sm font-jakarta font-semibold ring-offset-background transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 aria-disabled:opacity-50 active:brightness-90",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 hover:bg-primary/95",
+          "bg-primary text-primary-foreground hover:bg-[#F55700]",
         destructive:
-          "bg-red-500 text-white shadow-sm hover:bg-red-600",
+          "bg-destructive text-white hover:bg-[#912018]",
         outline:
-          "border border-border bg-transparent text-foreground hover:border-primary hover:text-primary",
+          "border-input bg-transparent text-foreground hover:border-foreground hover:bg-muted",
         secondary:
-          "bg-accent text-accent-foreground hover:bg-accent/90",
-        ghost: "hover:bg-accent/10 hover:text-accent",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground",
+        ghost: "hover:bg-primary/10 hover:text-foreground",
+        link: "text-foreground decoration-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-9 px-4 text-xs",
-        lg: "h-14 px-10 text-base",
+        default: "min-h-11 px-6 py-2",
+        sm: "min-h-11 px-4 py-2 text-sm",
+        lg: "min-h-12 px-7 py-3 text-base",
         icon: "h-11 w-11",
       },
     },

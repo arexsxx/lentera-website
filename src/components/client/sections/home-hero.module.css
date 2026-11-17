@@ -1,0 +1,73 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 700px;
+  padding: 160px 16px 40px;
+  background: #101a1b;
+  color: #e8f0f1;
+}
+
+.background { z-index: -3; object-fit: cover; object-position: center; }
+.shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgb(0 0 0 / 72%), rgb(0 0 0 / 48%) 60%, rgb(0 0 0 / 28%)); }
+.content { position: relative; z-index: 2; max-width: 1152px; margin-inline: auto; }
+.title { width: fit-content; font-size: clamp(3.25rem, 11.8vw, 8.5rem); font-weight: 800; line-height: .9; letter-spacing: -.035em; }
+.benefits { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 26px; font-size: .8125rem; }
+.benefits li { display: inline-flex; align-items: center; gap: 7px; }
+.benefits svg { width: 19px; height: 19px; flex-shrink: 0; color: #ff5b04; }
+.hiker { position: absolute; z-index: -1; right: 0; bottom: 0; width: 65%; height: 56%; opacity: .65; pointer-events: none; }
+.search { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 0; position: relative; margin-top: 48px; padding: 16px 8px; border-radius: 8px; background: #e8f0f1; color: #16232a; --ring: #16232a; }
+.field { min-width: 0; padding-inline: 10px; }
+.field:nth-child(even) { border-left: 1px solid #899a9e; }
+.field label, .label { display: block; margin-bottom: 4px; font-size: .6875rem; font-weight: 700; color: #a83a00; }
+.field input, .field select { display: block; min-width: 0; width: 100%; min-height: 44px; background: transparent; font-size: .75rem; border-radius: 3px; }
+.field input::placeholder { color: #42545a; opacity: 1; }
+.returnDate { display: flex; min-height: 36px; align-items: center; gap: 6px; font-size: .75rem; }
+.returnDate svg { width: 17px; height: 17px; flex-shrink: 0; }
+.searchButton { display: flex; grid-column: 1 / -1; min-height: 44px; margin-inline: 8px; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; background: #ff5b04; color: #16232a; font-size: .8125rem; font-weight: 600; transition: background-color 150ms; }
+.searchButton:hover { background: #f55700; }
+.searchButton:active { background: #e64f00; }
+.searchButton svg { width: 21px; height: 21px; }
+.brands { background: #fff; padding: 24px 0 28px; }
+.brandsHeading { position: relative; max-width: 1152px; padding-inline: 56px; margin-inline: auto; }
+.brandsHeading h2 { text-align: center; font-size: clamp(1.5rem, 3.3vw, 2.375rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.2; }
+.pauseButton { position: absolute; top: 50%; right: 12px; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; transform: translateY(-50%); border-radius: 6px; color: #526166; }
+.pauseButton:hover { background: #e8f0f1; color: #16232a; }
+.pauseButton svg { width: 15px; height: 15px; }
+.marquee { overflow: hidden; max-width: 1152px; margin: 18px auto 0; }
+.track { display: flex; width: max-content; }
+.brandGroup { display: flex; flex-shrink: 0; align-items: center; }
+.brandSlot { display: flex; flex-shrink: 0; width: 160px; height: 90px; align-items: center; justify-content: center; overflow: hidden; }
+.brandImage { position: relative; width: 140px; height: 80px; mix-blend-mode: multiply; }
+.greenforest { width: 140px; height: 140px; transform: scale(.85); }
+.antarestar { width: 110px; height: 80px; }
+.zarventure { width: 110px; height: 110px; transform: scale(.95); }
+.credifox { width: 180px; height: 85px; }
+.seekday { width: 180px; height: 180px; transform: scale(1.1); }
+
+@media (min-width: 640px) {
+  .hero { min-height: 610px; padding: 190px 32px 64px; }
+  .hiker { width: 40%; height: 76%; opacity: 1; }
+  .search { max-width: 720px; grid-template-columns: 1.3fr .8fr 1.15fr 1fr 44px; align-items: center; margin-top: 72px; gap: 0; padding: 12px; }
+  .field { padding-inline: 10px; }
+  .field + .field { border-left: 1px solid #899a9e; }
+  .field input, .field select, .returnDate { min-height: 30px; }
+  .searchButton { grid-column: auto; margin-inline: 0; }
+  .brandSlot { width: 210px; }
+}
+
+@media (min-width: 1024px) {
+  .hero { display: flex; align-items: center; min-height: clamp(680px, 63.5vw, 850px); padding: 190px 32px 80px; }
+  .content { width: 100%; }
+  .benefits { font-size: 1rem; gap: 24px; }
+  .hiker { right: max(3%, calc((100vw - 1220px) / 2)); width: 38%; height: 77%; }
+  .search { margin-top: 88px; }
+  .brands { padding-top: 26px; padding-bottom: 34px; }
+  .brandSlot { width: 230.4px; height: 100px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .track { animation: brands-left 45s linear infinite; }
+  .track[data-paused="true"], .marquee:hover .track, .brands:focus-within .track { animation-play-state: paused; }
+}
+
+@keyframes brands-left { to { transform: translateX(-50%); } }
